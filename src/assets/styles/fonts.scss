@@ -1,0 +1,30 @@
+@font-face {
+  font-family: Urbanist-Light;
+  src: url('../fonts/Urbanist-Light.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: Urbanist-Medium;
+  src: url('../fonts/Urbanist-Medium.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: Urbanist-Regular;
+  src: url('../fonts/Urbanist-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: Urbanist-SemiBold;
+  src: url('../fonts/Urbanist-SemiBold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: Urbanist-Bold;
+  src: url('../fonts/Urbanist-Bold.ttf') format('ttf');
+}
+
+$font-light: Urbanist-Light, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+$font-medium: Urbanist-Medium, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+$font-regular: Urbanist-Regular, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+$font-semiBold: Urbanist-SemiBold, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+$font-bold: Urbanist-Bold, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;

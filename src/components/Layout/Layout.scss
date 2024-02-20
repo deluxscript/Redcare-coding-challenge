@@ -1,0 +1,23 @@
+@use '../../assets/styles/mixins';
+
+header {
+  height: 100px;
+}
+
+footer {
+  height: 50px;
+}
+
+.Layout {
+  margin: 0 auto;
+  width: 90%;
+  padding: 20px;
+
+  @include mixins.mobile {
+    width: 100%;
+  }
+
+  @include mixins.tablet {
+    width: 100%;
+  }
+}
