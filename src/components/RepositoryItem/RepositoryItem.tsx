@@ -20,30 +20,30 @@ type RepositoryItemProps = {
   repo: TrendingRepo
 }
 
-export const RepositoryItem: FC<RepositoryItemProps> = props => {
-  const remainingTopics = props.repo.topics.slice(3)
+export const RepositoryItem: FC<RepositoryItemProps> = ({repo}) => {
+  const remainingTopics = repo.topics.slice(3)
   const repository = useRepositories()
 
   return (
-    <article className={classnames('Repository-item', {'Repository-item--starred': props.repo.starred})}>
+    <article data-testid='repository-item' className={classnames('Repository-item', {'Repository-item--starred': repo.starred})}>
       <div className='Repository-item__section'>
         <div className='Repository-item__section-media'>
-          <img className='Repository-item__section-media--image' src={props.repo.avatar_url} alt='repo-icon' />
-          {props.repo.starred && <FaStar className='Repository-item__section-media--star'/>}
+          <img className='Repository-item__section-media--image' src={repo.avatar_url} alt='repo-icon' />
+          {repo.starred && <FaStar className='Repository-item__section-media--star'/>}
         </div>
         <div className='Repository-item__section-info'>
           <h2 className='Repository-item__section-info--title'>
             <Link
-              to={props.repo.link}
+              to={repo.link}
               target='_blank'
               className='Repository-item__section-info--title-link'
             >
-              {props.repo.name}
+              {repo.name}
             </Link>
           </h2>
-          <p className='Repository-item__section-info--desc'>{props.repo.description}</p>
+          <p className='Repository-item__section-info--desc'>{repo.description}</p>
           <ul className='Repository-item__section-info--topics'>
-            {renderLimitedTopics(props.repo.topics)}
+            {renderLimitedTopics(repo.topics)}
             {remainingTopics.length > 0 &&
               <li className='Repository-item__section-info--topics-item'>
                 ...{remainingTopics.length} more
@@ -57,23 +57,23 @@ export const RepositoryItem: FC<RepositoryItemProps> = props => {
           <li className='Repository-item__label-list-item'>
             <button
               className='Repository-item__label-list-item--btn'
-              onClick={() => repository.updateStarredRepoStatus(props.repo.id)}>
-              {props.repo.starred ? 'UnStar' : 'Star'}
+              onClick={() => repository.updateStarredRepoStatus(repo.id)}>
+              {repo.starred ? 'UnStar' : 'Star'}
             </button>
           </li>
           <li className='Repository-item__label-list-item'>
             <GoCodeSquare />
-            <span className='Repository-item__label-list-item--text'>{props.repo.language}</span>
+            <span className='Repository-item__label-list-item--text'>{repo.language}</span>
           </li>
           <li className='Repository-item__label-list-item'>
             <GoStarFill />
-            <span className='Repository-item__label-list-item--text'>{props.repo.stargazers_count}</span>
+            <span className='Repository-item__label-list-item--text'>{repo.stargazers_count}</span>
           </li>
           <li className='Repository-item__label-list-item'>
             <GoGitBranch />
-            <span className='Repository-item__label-list-item--text'>{props.repo.forks_count}</span>
+            <span className='Repository-item__label-list-item--text'>{repo.forks_count}</span>
           </li>
-          <li className='Repository-item__label-list-item'>Updated {getDateDifference(props.repo.updated_at)}</li>
+          <li className='Repository-item__label-list-item'>Updated {getDateDifference(repo.updated_at)}</li>
         </ul>
       </div>
     </article>

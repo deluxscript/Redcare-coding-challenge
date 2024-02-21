@@ -12,7 +12,7 @@ import { useAppDispatch } from '../store/types'
  */
 export const useRepositories = () => {
   const dispatch = useAppDispatch()
-  const { trendingRepositories } = useSelector(repositoriesSelector)
+  const { trendingRepositories, loadingGettingTrendingRepositories } = useSelector(repositoriesSelector)
 
   const getTrendingRepositories = () => dispatch(getTrendingRepositoriesThunk())
   const loadStarredRepositories = () => dispatch(loadStarredRepo())
@@ -53,6 +53,7 @@ export const useRepositories = () => {
      * Loads starred repositories
      */
     loadStarredRepositories,
-    updateStarredRepoStatus
+    updateStarredRepoStatus,
+    loadingGettingTrendingRepositories
   }
 }

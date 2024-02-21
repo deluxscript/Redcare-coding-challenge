@@ -10,6 +10,7 @@ import { TabButton } from '../../components/TabButton/TabButton'
 import { RepositoryItem } from '../../components/RepositoryItem/RepositoryItem'
 import { TabContent } from '../../components/TabContent/TabContent'
 import { FilterLanguagePopup } from './FilterLanguagePopup'
+import { Spinner } from '../../components/Spinner/Spinner'
 
 import './RepositoryView.scss'
 
@@ -24,6 +25,10 @@ type RepositoryViewProps = {
    * An array of trending repository data objects.
    */
   trendingRepos: TrendingRepo[]
+  /**
+   * Flag to check if repositories are loaded
+   */
+  isReposPending: boolean
 }
 
 /**
@@ -116,10 +121,12 @@ export const RepositoryView: FC<RepositoryViewProps> = props => {
         ))}
       </div>
       <TabContent>
-        <RepositoryList
-          trendingRepos={filteredRepos}
-          currentPage={currentPage}
-        />
+        {props.isReposPending
+          ? <Spinner />
+          : <RepositoryList
+              trendingRepos={filteredRepos}
+              currentPage={currentPage} />
+        }
         <div className='Repository-view__pagination'>
           {[...Array(Math.ceil(filteredRepos.length / reposPerPage)).keys()].map((page) => (
             <button

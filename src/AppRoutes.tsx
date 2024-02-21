@@ -9,6 +9,7 @@ let appInitialise = false
 
 export const AppRoutes: FC = () => {
   const repositories = useRepositories()
+  const isReposPending = repositories.loadingGettingTrendingRepositories === 'pending'
 
   useEffect(() => {
     if (!appInitialise) {
@@ -21,7 +22,7 @@ export const AppRoutes: FC = () => {
   return (
     <>
       <Routes>
-        <Route path={routes.home} element={<RepositoryView trendingRepos={repositories.trendingRepositories} />} />
+        <Route path={routes.home} element={<RepositoryView trendingRepos={repositories.trendingRepositories} isReposPending={isReposPending}  />} />
       </Routes>
     </>
   )
